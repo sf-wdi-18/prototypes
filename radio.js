@@ -41,18 +41,4 @@ Radio.prototype.listen = function () {
     }
 };
 
-Radio.prototype.toggleSignal = function () {
-    if (this.signalType === 'AM') {
-        this.AMstation = this.station;
-        this.signalType = 'FM';
-        this.station = this.FMstation;
-    }
-    else if (this.signalType === 'FM') {
-        this.FMstation = this.station;
-        this.signalType = 'AM';
-        this.station = this.AMstation;
-    }
-    else {
-        console.log('Error: signalType is mis-defined');
-    }
-};
+// see solutions.md for the toggleSignal method
