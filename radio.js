@@ -41,4 +41,21 @@ Radio.prototype.listen = function () {
     }
 };
 
-// see solutions.md for the toggleSignal method
+Radio.prototype.toggleSignal = function(newSignalType){
+  if (this.signalType === "AM" && newSignalType === "FM") {
+    // record the AM station we start on as the AM station
+    this.AMStation = this.station;
+    // set the current station to the old FM station if there is one,
+    // or a default FM station of 88.1 (because NPR is awesome)
+    this.station = (this.FMStation ? this.FMStation : 88.1);
+    // record the station we're on now as our new FM station
+    this.FMStation = this.station;
+    // switch signal type
+    this.signalType = newSignalType;
+  } else if (this.signalType === "FM" && newSignalType === "AM") {
+    this.FMStation = this.station;
+    this.station = (this.AMStation ? this.AMStation : 535);
+    this.AMStation = this.station;
+    this.signalType = newSignalType;
+  } 
+}
